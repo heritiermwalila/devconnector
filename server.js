@@ -3,7 +3,19 @@ const mongoose = require('mongoose');
 const users = require('./routers/api/users');
 const profile = require('./routers/api/profile');
 const posts = require('./routers/api/posts');
+const bodyParse = require('body-parser');
+const passport = require('passport');
 const app = express();
+
+
+//MIDDLEWARE
+app.use(bodyParse.urlencoded({extended:false}))
+app.use(bodyParse.json())
+app.use(passport.initialize()) //passport middleware
+
+//password Config
+require('./config/passport')(passport)
+
 
 //DB CONFIGURATION
 const db = require('./config/keys').mongoURI;
