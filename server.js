@@ -13,7 +13,7 @@ app.use(bodyParse.urlencoded({extended:false}))
 app.use(bodyParse.json())
 app.use(passport.initialize()) //passport middleware
 
-//password Config
+//passport Configuration
 require('./config/passport')(passport)
 
 
